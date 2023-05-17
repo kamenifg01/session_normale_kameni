@@ -1,0 +1,112 @@
+<nav class="">
+  <div class="container-fluid">
+    <br>
+    <div class="d-flex">
+      <button (click)="clickAddAbonne()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="openModal()" class="btn btn-success">Add un Abonne</button>
+
+    </div>
+
+  </div>
+</nav>
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Age</th>
+      <th scope="col">Rue</th>
+      <th scope="col">Sexe</th>
+      <th scope="col">Profession</th>
+      <th scope="col">Id_motivation</th>
+      <th scope="col">Code_postal</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Pays</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Abonne of AbonneData">
+      <td>{{Abonne.id}}</td>
+      <td>{{Abonne.nom}}</td>
+      <td>{{Abonne.prenom}}</td>
+      <td>{{Abonne.age}}</td>
+      <td>{{Abonne.rue}}</td>
+      <td>{{Abonne.sexe}}</td>
+      <td>{{Abonne.profession}}</td>
+      <td>{{Abonne.id_motivation}}</td>
+      <td>{{Abonne.code_postal}}</td>
+      <td>{{Abonne.ville}}</td>
+      <td>{{Abonne.paye}}</td>
+      <td>{{Abonne.telephone}}</td>
+      <td>{{Abonne.email}}</td>
+      <td>
+        <button (click)="modifierAbonne(Abonne)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="openModal()" class="btn btn-info">Edit</button>
+        <button (click)="deleteAbonne(Abonne)"  class="btn btn-danger mx-5 ">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajoute une Abonne</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup] = "formValue">
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Nom</label>
+            <input type="text" formControlName="nom" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Prenom</label>
+            <input type="text" formControlName="prenom" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Age</label>
+            <input type="number" formControlName="age" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Rue</label>
+            <input type="text" formControlName="rue" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Sexe</label>
+            <input type="text" formControlName="sexe" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Profession</label>
+            <input type="text" formControlName="profession" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Id_motivation</label>
+            <input type="number" formControlName="id_motivation" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Code_postal</label>
+            <input type="text" formControlName="code_postal" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Ville</label>
+            <input type="text" formControlName="ville" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Pays</label>
+            <input type="text" formControlName="paye" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Telephone</label>
+            <input type="text" formControlName="telephone" class="form-control"  placeholder="Entre une Abonne">
+
+            <label for="exampleInputEmail1">Email</label>
+            <input type="text" formControlName="email" class="form-control"  placeholder="Entre une Abonne">
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer mb-3">
+        <button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal" (click)="doSomeThing()">Close</button>
+        <button  *ngIf="showAdd" class="btn btn-primary" (click)="postAbonne()">Add</button>
+        <button *ngIf="showUpdate" type="button" class="btn btn-primary" (click)="updateAbonne()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
